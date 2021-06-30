@@ -35,6 +35,7 @@ const dataDisplay = (data) => {
     btn.id = "btn_" + user.id;
     btn.onclick = () => {
       posts.style.display = "block";
+      posts.style.backgroundColor = "rgb(148, 0, 99)";
       postsDisplay(user.id);
       window.scrollTo(0, 0);
     };

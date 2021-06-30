@@ -31,7 +31,7 @@ body::after {
 #posts {
   box-sizing: border-box;
   box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.4);
-  background-color: rgb(148, 0, 99);
+  background-color: transparent;
   color: #eee;
   padding: 50px 20px;
   margin-left: 20px;
@@ -42,6 +42,7 @@ body::after {
   letter-spacing: 1px;
   font-size: 1.1rem;
   justify-self: start;
+  transition: ease-in 0.3s;
 }
 #posts h2 {
   font-family: roboto;
