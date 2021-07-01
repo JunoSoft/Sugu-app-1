@@ -36,17 +36,18 @@ body::after {
   padding: 50px 20px;
   margin-left: 20px;
   margin-top: 15px;
-  height: 70vh;
-  width: 80%;
+  width: 90%;
   z-index: 2;
   letter-spacing: 1px;
   font-size: 1.1rem;
-  justify-self: start;
+  justify-self: center;
   transition: ease-in 0.3s;
 }
+
 #posts h2 {
   font-family: roboto;
   width: 100%;
+  font-size: 1.5rem;
 }
 .DataList li {
   list-style: none;
@@ -81,6 +82,7 @@ body::after {
   width: 80%;
   background: #fff;
   padding: 50px;
+  transition: 0.2s ease-in;
 }
 #SuguApp {
   z-index: 99;
@@ -104,11 +106,15 @@ body::after {
 }
 @media (max-width: 877px) {
   .DataList {
-    width: 100%;
+    width: 90%;
+    padding: 20px 40px;
+  }
+  #posts {
+    margin-left: 0;
   }
   .DataList li button {
-    top: 25px;
-    right: -45px;
+    top: 30px;
+    right: -30px;
   }
   .DataList li {
     padding-right: 0;

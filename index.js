@@ -1,27 +1,40 @@
 const app = document.querySelector("#SuguApp");
 const listData = document.querySelector(".DataList");
 const posts = document.querySelector("#posts");
+const postTitle = document.createElement("h2");
+postTitle.append("POSTS");
 
+//Fetching Users Data to be displayed --Email and Name and button to be clicked
 const usersFetch = () => {
   fetch("https://jsonplaceholder.typicode.com/users")
     .then((response) => response.json())
     .then((data) => dataDisplay(data));
 };
-const postsDisplay = (id) => {
-  fetch("https://jsonplaceholder.typicode.com/posts/" + id)
+// code for displaying All Posts for clicked users
+const postsDisplay = (data) => {
+  posts.innerHTML = "";
+  posts.append(postTitle);
+  data.map((post) => {
+    const pst = document.createElement("div");
+    pst.id = post.userId;
+    const pstTitle = document.createElement("h2");
+    const pstBody = document.createElement("div");
+    pstTitle.textContent = post.title;
+    pstBody.textContent = post.body;
+    pst.append(pstTitle, pstBody);
+    posts.append(pst);
+  });
+};
+
+// Fetching  Posts for Clicked  user
+const postsFetch = (id) => {
+  fetch("https://jsonplaceholder.typicode.com/users/" + id + "/posts")
     .then((response) => response.json())
-    .then((post) => {
-      posts.innerHTML = "";
-      const pst = document.createElement("div");
-      pst.id = post.userId;
-      const pstTitle = document.createElement("h2");
-      const pstBody = document.createElement("div");
-      pstTitle.textContent = post.title;
-      pstBody.textContent = post.body;
-      pst.append(pstTitle, pstBody);
-      posts.append(pst);
+    .then((data) => {
+      postsDisplay(data);
     });
 };
+// code for displaying Users Name,Email,Button to be clicked pon home page
 const dataDisplay = (data) => {
   data.map((user) => {
     const list = document.createElement("li");
@@ -36,7 +49,7 @@ const dataDisplay = (data) => {
     btn.onclick = () => {
       posts.style.display = "block";
       posts.style.backgroundColor = "rgb(148, 0, 99)";
-      postsDisplay(user.id);
+      postsFetch(user.id);
       window.scrollTo(0, 0);
     };
 
